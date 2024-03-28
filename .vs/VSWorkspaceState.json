@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\spa_react_typescript_hello-world",
+    "\\spa_react_typescript_hello-world\\src",
+    "\\spa_react_typescript_hello-world\\src\\components",
+    "\\spa_react_typescript_hello-world\\src\\components\\buttons",
+    "\\spa_react_typescript_hello-world\\src\\components\\navigation",
+    "\\spa_react_typescript_hello-world\\src\\components\\navigation\\desktop",
+    "\\spa_react_typescript_hello-world\\src\\components\\navigation\\mobile",
+    "\\spa_react_typescript_hello-world\\src\\pages"
+  ],
+  "SelectedNode": "\\spa_react_typescript_hello-world\\src\\components\\navigation\\desktop\\nav-bar-tabs.tsx",
+  "PreviewInSolutionExplorer": false
+}
