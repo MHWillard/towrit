@@ -1,0 +1,9 @@
+﻿PROJECT STEPS
+
+- Set up PostgreSQL and integrate with app.
+- Set up user data types and tables for database.
+- Build and test new user signup to add to database.
+- Set up app to retrieve user posts based on feed.
+- Set up basic protected profile with info from logged in user.
+- Test whole operation front to end.
+- Move app to deployment and test online version.

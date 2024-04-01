@@ -1,7 +1,9 @@
+using App.Data;
 using App.Middlewares;
-using App.Services;
+//using App.Services;
 using dotenv.net;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 
@@ -20,7 +22,7 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 });
 
 // Add services to the container.
-builder.Services.AddScoped<IMessageService, MessageService>();
+//builder.Services.AddScoped<IMessageService, MessageService>();
 
 builder.Services.AddCors(options =>
 {
