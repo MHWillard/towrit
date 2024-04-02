@@ -4,8 +4,10 @@ using App.Middlewares;
 using dotenv.net;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,6 +59,7 @@ builder.Host.ConfigureServices((services) =>
                 ValidateIssuerSigningKey = true
             };
         })
+
 );
 
 var app = builder.Build();
@@ -78,6 +81,9 @@ foreach (var key in requiredVars)
         throw new Exception($"Config variable missing: {key}.");
     }
 }
+
+var connectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];
+Console.WriteLine("connectionstring:" + connectionString);
 
 app.Urls.Add(
     $"http://+:{app.Configuration.GetValue<string>("PORT")}");

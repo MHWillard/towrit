@@ -15,7 +15,9 @@ namespace App.Data
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             // connect to postgres with connection string from app settings
-            options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            Console.WriteLine("connectionstring:" + connectionString);
+            options.UseNpgsql(connectionString);
         }
 
         public DbSet<Post> Posts { get; set; }
