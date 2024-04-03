@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using System;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,8 +83,6 @@ foreach (var key in requiredVars)
     }
 }
 
-var connectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];
-Console.WriteLine("connectionstring:" + connectionString);
 
 app.Urls.Add(
     $"http://+:{app.Configuration.GetValue<string>("PORT")}");

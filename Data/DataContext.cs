@@ -1,23 +1,25 @@
 ﻿using App.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace App.Data
 {
     public class DataContext : DbContext
     {
-        protected readonly IConfiguration Configuration;
-
-        public DataContext(IConfiguration configuration)
+        public DataContext()
         {
-            Configuration = configuration;
+        }
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // connect to postgres with connection string from app settings
-            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            Console.WriteLine("connectionstring:" + connectionString);
-            options.UseNpgsql(connectionString);
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build();
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=towritDB;Username=postgres;Password=12Wilko$10");
         }
 
         public DbSet<Post> Posts { get; set; }
