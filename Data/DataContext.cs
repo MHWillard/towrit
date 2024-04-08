@@ -6,6 +6,25 @@ namespace App.Data
 {
     public class DataContext : DbContext
     {
+        protected readonly IConfiguration Configuration;
+
+        public DataContext(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            // connect to postgres with connection string from app settings
+            options.UseNpgsql("Host=localhost;Port=5432;Database=towritDB;Username=postgres;Password=12Wilko$10");
+        }
+
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+    }
+    /*
+    public class DataContext : DbContext
+    {
         public DataContext()
         {
         }
@@ -24,5 +43,5 @@ namespace App.Data
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }
-    }
+    }*/
 }
