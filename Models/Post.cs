@@ -2,10 +2,10 @@
 {
     public class Post
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
+        public int PostID { get; set; }
+        public string PostTitle { get; set; }
 
         public DateTime CreatedAt { get; set; }
-        public string Content { get; set; }
+        public string PostContent { get; set; }
     }
 }

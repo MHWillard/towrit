@@ -1,7 +1,18 @@
-﻿PROJECT STEPS
+﻿ToWrit is a simple online blogging application that allows users to write about their lives in a minimalist format. Visitors to ToWrit can:
+
+* create a new user with an email and a password
+* can access a protected profile with their information
+* can make a new post
+* can read the blog feed of their account or any other public account
+
+Yes, this is a deliberately simple application, lacking a lot of the features of bigger sites, but it could easily be expanded down the line.
+
+ToWrit runs a stack of React and .NET Core, with a PostgreSQL database and Auth0 for user authentication and authorization.
+
+PROJECT STEPS
 
 - Set up PostgreSQL and integrate with app.
-- Set up user data types and tables for database.
+X Set up user data types and tables for database.
 - Build and test new user signup to add to database.
 - Set up app to retrieve user posts based on feed.
 - Set up basic protected profile with info from logged in user.
