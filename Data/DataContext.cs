@@ -19,8 +19,10 @@ namespace App.Data
             options.UseNpgsql("Host=localhost;Port=5432;Database=towritDB;Username=postgres;Password=12Wilko$10");
         }
 
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Post> Post { get; set; }
+        public DbSet<User> User { get; set; }
+
+        public DbSet<UserPost> UserPost { get; set; }
     }
     /*
     public class DataContext : DbContext
