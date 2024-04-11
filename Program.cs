@@ -43,6 +43,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddControllers();
+builder.Services.AddDbContext<DataContext>(o => o.UseNpgsql("Host=localhost;Port=5432;Database=towritDB;Username=postgres;Password=12Wilko$10"));
 
 builder.Host.ConfigureServices((services) =>
     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

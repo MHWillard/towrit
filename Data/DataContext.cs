@@ -13,16 +13,27 @@ namespace App.Data
             Configuration = configuration;
         }
 
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+        }
+
+        public DbSet<PostModel> Post { get; set; }
+        public DbSet<UserModel> User { get; set; }
+        public DbSet<UserPostModel> UserPost { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            /*modelBuilder.Entity<Post>().ToTable("Post");
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<UserPost>().ToTable("UserPost");*/
+            modelBuilder.UseSerialColumns();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             // connect to postgres with connection string from app settings
             options.UseNpgsql("Host=localhost;Port=5432;Database=towritDB;Username=postgres;Password=12Wilko$10");
         }
-
-        public DbSet<Post> Post { get; set; }
-        public DbSet<User> User { get; set; }
-
-        public DbSet<UserPost> UserPost { get; set; }
     }
     /*
     public class DataContext : DbContext
