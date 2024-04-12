@@ -17,6 +17,7 @@
 
 
   <ItemGroup>
+    <Folder Include="EFCore\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
