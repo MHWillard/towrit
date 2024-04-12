@@ -17,7 +17,7 @@ namespace App.Data
         {
         }
 
-        public DbSet<PostModel> Post { get; set; }
+        public DbSet<PostModel> Posts { get; set; }
         public DbSet<UserModel> User { get; set; }
         public DbSet<UserPostModel> UserPost { get; set; }
 

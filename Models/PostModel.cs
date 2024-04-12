@@ -5,6 +5,8 @@ namespace App.Models
 {
     public class PostModel
     {
+
+        public PostModel() { }  
         public PostModel(int PostID, string PostTitle, string PostContent, DateTime PostDate)
         {
             this.PostID = PostID;

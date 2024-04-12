@@ -4,15 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace App.Models;
 
 [Table("User")]
-public class UserModel
+public class User
 {
-    public UserModel(int UserID, string UserName, string UserEmail, DateTime JoinDate) { 
-        this.UserID = UserID;
-        this.UserName = UserName;
-        this.UserEmail = UserEmail;
-        this.JoinDate = JoinDate;
-    }
-
     [Key, Required]
     public int UserID { get; set; }
     [Required]

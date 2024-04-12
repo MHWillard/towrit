@@ -17,25 +17,25 @@ namespace App.Data
 
             UserModel[] users = 
             {
-                new User(67061861, "user1", "user1@example.com", DateTime.Parse("2001-09-11")),
-                new User(30575214, "user2", "user2@example.com", DateTime.Parse("2002-09-11")),
-                new User(05823084, "user3", "user3@example.com", DateTime.Parse("2003-09-11"))
+                new UserModel(67061861, "user1", "user1@example.com", DateTime.Parse("2001-09-11")),
+                new UserModel(30575214, "user2", "user2@example.com", DateTime.Parse("2002-09-11")),
+                new UserModel(05823084, "user3", "user3@example.com", DateTime.Parse("2003-09-11"))
             };
             //UserID, UserName, UserEmail, JoinDate
             PostModel[] posts =
             {
-                new Post(95896342, "User1 Post1","user1 post1 content",DateTime.Parse("2001-09-11")),
-                new Post(93005896, "User1 Post2","user1 post2 content",DateTime.Parse("2001-09-12")),
-                new Post(57173004, "User2 Post1","user2 post1 content",DateTime.Parse("2001-10-11")),
-                new Post(37906609, "User3 Post1","user3 post1 content",DateTime.Parse("2001-11-11"))
+                new PostModel(95896342, "User1 Post1","user1 post1 content",DateTime.Parse("2001-09-11")),
+                new PostModel(93005896, "User1 Post2","user1 post2 content",DateTime.Parse("2001-09-12")),
+                new PostModel(57173004, "User2 Post1","user2 post1 content",DateTime.Parse("2001-10-11")),
+                new PostModel(37906609, "User3 Post1","user3 post1 content",DateTime.Parse("2001-11-11"))
             };
             //PostID, PostTitle, PostContent, PostDate
             UserPostModel[] userPosts =
             {
-                new UserPost(66073549, 67061861, 95896342),
-                new UserPost(28247715, 67061861, 93005896),
-                new UserPost(08783608, 30575214, 57173004),
-                new UserPost(19792150, 05823084, 37906609)
+                new UserPostModel(66073549, 67061861, 95896342),
+                new UserPostModel(28247715, 67061861, 93005896),
+                new UserPostModel(08783608, 30575214, 57173004),
+                new UserPostModel(19792150, 05823084, 37906609)
             };
             //UserPostID, UserID, PostID
 

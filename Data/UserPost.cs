@@ -5,14 +5,8 @@ namespace App.Models;
 
 [Table("UserPost")]
 
-public class UserPostModel
+public class UserPost
 {
-    public UserPostModel(int UserPostID, int UserID, int PostID)
-    {
-        this.UserPostID = UserPostID;
-        this.UserID = UserID;
-        this.PostID = PostID;
-    }
 
     [Key, Required]
     public int UserPostID { get; set; }

@@ -4,15 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace App.Models
 {
     [Table("Post")]
-    public class PostModel
+    public class Post
     {
-        public PostModel(int PostID, string PostTitle, string PostContent, DateTime PostDate)
-        {
-            this.PostID = PostID;
-            this.PostTitle = PostTitle;
-            this.PostContent = PostContent;
-            this.PostDate = PostDate;
-        }
 
         [Key, Required]
         public int PostID { get; set; }
