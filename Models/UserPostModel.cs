@@ -5,6 +5,7 @@ namespace App.Models;
 
 public class UserPostModel
 {
+    public UserPostModel() { }
     public UserPostModel(int UserPostID, int UserID, int PostID)
     {
         this.UserPostID = UserPostID;

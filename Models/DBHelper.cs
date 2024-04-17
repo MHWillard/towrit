@@ -24,6 +24,7 @@ namespace App.Models
         public List<PostModel> GetPosts(int userid)
         {
             List<PostModel> response = new List<PostModel>();
+            //here, it polls for the UserPost related to the userid. Then it uses that to query for all of the posts.
             var postList = _context.Posts.ToList();
             postList.ForEach(row => response.Add(new PostModel() {PostID = row.PostID, PostContent=row.PostContent, PostDate=row.PostDate, PostTitle=row.PostTitle}));
             //PostID, PostTitle, PostContent, PostDate
@@ -37,6 +38,18 @@ namespace App.Models
             //get post, get userid
             //dump post itself into table
             //dup new userposts entry with post.id and userid
+            PostModel newPost = new PostModel();
+            UserPostModel newUserPost = new UserPostModel();
+            newPost.PostID = post.PostID;
+            newPost.PostContent = post.PostContent;
+            newPost.PostDate = post.PostDate;
+            newPost.PostTitle = post.PostTitle;
+            newUserPost.UserID = userid;
+            newUserPost.PostID += 1; //replace with other method later
+
+            _context.Posts.Add(newPost);
+            _context.UserPost.Add(newUserPost);
+            _context.SaveChanges();
         }
 
         //DELETE
