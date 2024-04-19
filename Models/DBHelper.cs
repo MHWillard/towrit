@@ -52,6 +52,11 @@ namespace App.Models
             _context.SaveChanges();
         }
 
+        public void AddUser(UserModel user) { 
+            _context.User.Add(user);
+            _context.SaveChanges();
+        }
+
         //DELETE
 
 
