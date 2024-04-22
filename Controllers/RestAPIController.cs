@@ -12,39 +12,69 @@ namespace App.Controllers
     [ApiController]
     public class RestAPIController : Controller
     {
+        /*
         private readonly DBHelper _db;
         public RestAPIController(DataContext _context) {
             _db = new DBHelper(_context);
+        }*/
+        private readonly DBHelper _db;
+        public RestAPIController(DataContext dataContext)
+        {
+            _db = new DBHelper(dataContext);
         }
 
         // GET user
         [HttpGet]
         [Route("api/[controller]/GetUser")]
-        public async Task<IActionResult> GetUser(string username) {
+        public IActionResult GetUser(string username) {
+            ResponseType type = ResponseType.Success;
+            try
+            {
+                UserModel data = _db.GetUser(username);
+
+                if (data == null)
+                {
+                    type = ResponseType.NotFound;
+                }
+                return Ok(ResponseHandler.GetAppResponse(type, data));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
+
+            /*
             UserModel data = await _db.GetUser(username);
             if (data == null)
             {
                 return NotFound();
             }
 
-            return View(data);
+            return data;*/
 
         }
 
         // GET user posts
         [HttpGet]
         [Route("api/[controller]/GetPosts")]
-        public async Task<IActionResult> GetPosts(string username) {
+        public IActionResult GetPosts(string username) {
+            ResponseType type = ResponseType.Success;
             try
             {
-                UserModel user = await _db.GetUser(username);
-                List<PostModel> posts = await _db.GetPosts(user.UserID);
-                return View(posts);
-            } catch (Exception ex)
+                UserModel user = _db.GetUser(username);
+                List<PostModel> posts = _db.GetPosts(user.UserID);
+
+                if (posts == null)
+                {
+                    type = ResponseType.NotFound;
+                }
+                return Ok(ResponseHandler.GetAppResponse(type, posts));
+                }
+            catch (Exception ex)
             {
-                return NotFound();
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
             }
-            }
+              
             
             //get userPostModel
             //use that to look up posts
@@ -54,28 +84,37 @@ namespace App.Controllers
         // POST new post
         [HttpPost]
         [Route("api/[controller]/AddPost")]
-        public async Task<IActionResult> AddPost(PostModel post, string username) {
-        try {
-            UserModel user = await _db.GetUser(username);
-            await _db.AddPost(post, user.UserID);
-        } catch (Exception ex) {
-            return NotFound();
-        }
+        public IActionResult AddPost(PostModel post, string username) {
+            try
+            {
+                ResponseType type = ResponseType.Success;
+                UserModel user = _db.GetUser(username);
+                _db.AddPost(post, user.UserID);
+                return Ok(ResponseHandler.GetAppResponse(type, post));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
 
-    }
+        }
 
         // POST new user
         [HttpPost]
         [Route("api/[controller]/AddUser")]
-        public async Task<IActionResult>  AddUser(UserModel user) {
-        try
-        {
-            await _db.AddUser(user);
+        public IActionResult  AddUser(UserModel user) {
+            try
+            {
+                ResponseType type = ResponseType.Success;
+                _db.AddUser(user);
+                return Ok(ResponseHandler.GetAppResponse(type, user));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
+
+
         }
-        catch (Exception ex)
-        {
-            return NotFound();
-        }
-    }
     }
 }
