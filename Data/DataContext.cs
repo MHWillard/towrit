@@ -6,12 +6,12 @@ namespace App.Data
 {
     public class DataContext : DbContext
     {
-        protected readonly IConfiguration Configuration;
+        //protected readonly IConfiguration Configuration;
 
-        public DataContext(IConfiguration configuration)
+        /*public DataContext(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
+        }*/
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
