@@ -25,7 +25,7 @@ namespace App.Controllers
 
         // GET user
         [HttpGet]
-        [Route("api/[controller]/GetUser")]
+        [Route("api/[controller]/GetUser/{username}")]
         public IActionResult GetUser(string username) {
             ResponseType type = ResponseType.Success;
             try
@@ -56,7 +56,7 @@ namespace App.Controllers
 
         // GET user posts
         [HttpGet]
-        [Route("api/[controller]/GetPosts")]
+        [Route("api/[controller]/GetPosts/{username}")]
         public IActionResult GetPosts(string username) {
             ResponseType type = ResponseType.Success;
             try
